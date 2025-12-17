@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static BevasarloListaWPF.MainWindow;
 
 namespace BevasarloListaWPF
 {
@@ -20,21 +21,36 @@ namespace BevasarloListaWPF
         public MainWindow()
         {
             InitializeComponent();
+            betoltes();
         }
-        public List<termek> termekLista;
-        private string url = "bevasarlosLista";
-        private void betoltes(string url)
+        public List<ItemModel> termekek;
+        private void betoltes()
         {
-            
+            termekek = new List<ItemModel>();
+            termekek.Add(new ItemModel("Tej", 5, 450, "A"));
+            termekek.Add(new ItemModel("Kenyer", 10, 350, "B"));
+            termekek.Add(new ItemModel("Sajt", 2, 1200, "A"));
+            termekek.Add(new ItemModel("Alma", 20, 200, "C"));
+            termekek.Add(new ItemModel("Narancs", 15, 300, "C"));
+            termekek.Add(new ItemModel("Hús", 3, 2500, "D"));
+            termekek.Add(new ItemModel("Csokoládé", 7, 900, "B"));
+            termekek.Add(new ItemModel("Kenyér", 1, 450, "B"));
+            termekek.Add(new ItemModel("Tej", 12, 400, "A"));
+            termekek.Add(new ItemModel("Sajt", 5, 1500, "D"));
+            frissites();
         }
-        public class termek
+        private void frissites()
+        {
+            dataGrid.ItemsSource = termekek;
+        }
+        public class ItemModel
         {
             public string Name { get; set; }
             public int Quantity { get; set; }
             public int Price { get; set; }
-            public char Type { get; set; }
+            public string Type { get; set; }
 
-            public termek(string name, int quantity, int price, char type)
+            public ItemModel(string name, int quantity, int price, string type)
             {
                 Name = name;
                 Quantity = quantity;
