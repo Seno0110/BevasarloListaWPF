@@ -16,9 +16,11 @@
             <ScrollViewer>
                 <GroupBox Header="Termékek" Margin="10">
                     <WrapPanel>
+                        <Button Content="Frissítés" Margin="10" Click="frissites"/>
                         <Button Content="Hozzáadás" Margin="10" Click="hozzadasOldal"/>
                         <Button Content="Törlés" Margin="10" Click="torles"/>
                         <Button Content="A tipus 3 legnagyobb" Margin="10" Click="Atipus3"/>
+                        <Button Content="Top 5 összérték" Margin="10" Click="top5Osszertek"/>
                     </WrapPanel>
                 </GroupBox>
             </ScrollViewer>

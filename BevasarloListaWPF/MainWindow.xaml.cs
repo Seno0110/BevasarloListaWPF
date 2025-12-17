@@ -37,9 +37,9 @@ namespace BevasarloListaWPF
             termekek.Add(new ItemModel("Kenyér", 1, 450, "B"));
             termekek.Add(new ItemModel("Tej", 12, 400, "A"));
             termekek.Add(new ItemModel("Sajt", 5, 1500, "D"));
-            frissites();
+            dataGrid.ItemsSource = termekek;
         }
-        private void frissites()
+        private void frissites(object sender, RoutedEventArgs e)
         {
             dataGrid.ItemsSource = termekek;
         }
@@ -50,7 +50,7 @@ namespace BevasarloListaWPF
             if (ujtermek.DialogResult == true)
             {
                 termekek.Add(ujtermek.ujtermek);
-                frissites();
+                dataGrid.ItemsSource = termekek;
                 dataGrid.Items.Refresh();
             }
         }
@@ -65,6 +65,10 @@ namespace BevasarloListaWPF
         private void Atipus3(Object sender, RoutedEventArgs e)
         {
             dataGrid.ItemsSource = termekek.Where(x => x.Type == "A").OrderByDescending(x => x.Sum).Take(3);
+        }
+        private void top5Osszertek(Object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = termekek.OrderByDescending(x=>x.Sum).Take(5);
         }
         public class ItemModel
         {
