@@ -24,6 +24,9 @@
                         <Button Content="Ár szerint csökkenő" Margin="10" Click="arSzerintCsokkeno"/>
                         <Button Content="Minden D tipus > 500" Margin="10" Click="mindenD500felett"/>
                         <Button Content="Név + Összérték ABC" Margin="10" Click="nevOsszertek"/>
+                        <Button Content="Típus db + összérték" Margin="10" Click="tipusDbOsszertek"/>
+                        <Button Content="Típus átlagár" Margin="10" Click="tipusAtlagAr"/>
+                        <Button Content="D tipus 500 felett és számuk" Margin="10" Click="dTipus500Felett"/>
                     </WrapPanel>
                 </GroupBox>
             </ScrollViewer>

@@ -64,11 +64,11 @@ namespace BevasarloListaWPF
         }
         private void Atipus3(Object sender, RoutedEventArgs e)
         {
-            dataGrid.ItemsSource = termekek.Where(x => x.Type == "A").OrderByDescending(x => x.Sum).Take(3);
+            dataGrid.ItemsSource = termekek.Where(x => x.Type == "A").OrderByDescending(x => x.Summa).Take(3);
         }
         private void top5Osszertek(Object sender, RoutedEventArgs e)
         {
-            dataGrid.ItemsSource = termekek.OrderByDescending(x=>x.Sum).Take(5);
+            dataGrid.ItemsSource = termekek.OrderByDescending(x=>x.Summa).Take(5);
         }
         private void arSzerintCsokkeno(Object sender, RoutedEventArgs e)
         {
@@ -80,7 +80,26 @@ namespace BevasarloListaWPF
         }
         private void nevOsszertek(object sender, RoutedEventArgs e)
         {
-            dataGrid.ItemsSource = termekek.Select(x => new { Név = x.Name, Összérték = x.Sum }).OrderByDescending(x=>x.Név);
+            dataGrid.ItemsSource = termekek.Select(x => new { Név = x.Name, Összérték = x.Summa }).OrderByDescending(x=>x.Név);
+        }
+        private void tipusDbOsszertek(Object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = termekek
+            .GroupBy(x => x.Type) 
+            .Select(g => new
+            {
+                Név = g.Key,                   
+                Összérték = g.Sum(i => i.Summa) 
+            })
+            .ToList();
+        }
+        private void tipusAtlagAr(object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = termekek.GroupBy(x => x.Type).Select(c => new { Név = c.Key, ÁtlagÁr = Math.Round(c.Average(g => g.Price)) }).ToList();
+        }
+        private void dTipus500Felett(object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = termekek.GroupBy(x => x.Type).Select(c => new { Név = c.Key, Termékekszáma = c.Count(), Átlagár = Math.Round(c.Average(g=>g.Price)) });
         }
         public class ItemModel
         {
@@ -88,7 +107,7 @@ namespace BevasarloListaWPF
             public int Quantity { get; set; }
             public int Price { get; set; }
             public string Type { get; set; }
-            public int Sum { get; set; }
+            public int Summa { get; set; }
 
             public ItemModel(string name, int quantity, int price, string type)
             {
@@ -96,7 +115,7 @@ namespace BevasarloListaWPF
                 Quantity = quantity;
                 Price = price;
                 Type = type;
-                Sum = Price * Quantity;
+                Summa = Price * Quantity;
             }
         }
     }
