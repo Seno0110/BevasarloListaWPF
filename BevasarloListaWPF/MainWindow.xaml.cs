@@ -99,7 +99,8 @@ namespace BevasarloListaWPF
         }
         private void dTipus500Felett(object sender, RoutedEventArgs e)
         {
-            dataGrid.ItemsSource = termekek.Where(x=>x.Price>500).GroupBy(x => x.Type).Select(c => new { Név = c.Key, Termékekszáma = c.Count(), Átlagár = Math.Round(c.Average(g=>g.Price)) });
+            dataGrid.ItemsSource = termekek.Where(x => x.Price > 500).GroupBy(x => x.Type).Select(c => new { Név = c.Key, Termékekszáma = c.Count() }).OrderBy(x => x.Név).ThenByDescending(m => m.Termékekszáma);
+
         }
         public class ItemModel
         {
