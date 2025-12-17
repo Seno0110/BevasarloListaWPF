@@ -27,6 +27,13 @@
                         <Button Content="Típus db + összérték" Margin="10" Click="tipusDbOsszertek"/>
                         <Button Content="Típus átlagár" Margin="10" Click="tipusAtlagAr"/>
                         <Button Content="D tipus 500 felett és számuk" Margin="10" Click="dTipus500Felett"/>
+                        <Button Content="Kisebb mint 1000 és >10db" Margin="10" Click="kisebb100010db"/>
+                        <Button Content="Összértéke nagyobb mint 2000" Margin="10" Click="osszertekNagyobbMint2000"/>
+                        <Button Content="Termeknev és tipus" Margin="10" Click="termeknevestipus"/>
+                        <Button Content="Legértékesebb termék típusonként" Margin="10" Click="legertekesebbtipus"/>
+                        <Button Content="Legértékesebb termék típusonként" Margin="10" Click="osszesitettdarabszam"/>
+                        <Button Content="Van-e 0 Ft os" Margin="10" Click="vane0ftos"/>
+                        
                     </WrapPanel>
                 </GroupBox>
             </ScrollViewer>

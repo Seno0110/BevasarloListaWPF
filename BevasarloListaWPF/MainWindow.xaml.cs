@@ -102,6 +102,31 @@ namespace BevasarloListaWPF
             dataGrid.ItemsSource = termekek.Where(x => x.Price > 500).GroupBy(x => x.Type).Select(c => new { Név = c.Key, Termékekszáma = c.Count() }).OrderBy(x => x.Név).ThenByDescending(m => m.Termékekszáma);
 
         }
+        private void kisebb100010db(object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = termekek.Where(x=>x.Price>1000 && x.Quantity>10);
+        }
+        private void osszertekNagyobbMint2000(object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = termekek.Where(x=>x.Summa>2000).OrderBy(c=>c.Name);
+        }
+        private void termeknevestipus(object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = termekek.Select(x => new {Név = x.Name, Típus = x.Type});
+        }
+        private void legertekesebbtipus(object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = termekek.GroupBy(x => x.Type).Select(c => new {Típus = c.Key,Ár = c.Max(v=>v.Price)}).Take(1);
+        }
+        private void osszesitettdarabszam(object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = termekek.GroupBy(x => new {Név = x.Name}).Select(c => new { Típus = c.Key.Név, Ár = c.Max(v => v.Price) }).OrderByDescending(m=>m.Ár).Take(1);
+        }
+        private void vane0ftos(object sender, RoutedEventArgs e) 
+        {
+            var flag = termekek.Any(x => x.Price == 0);
+            MessageBox.Show(flag ? "Van" : "Nincs");
+        }
         public class ItemModel
         {
             public string Name { get; set; }
