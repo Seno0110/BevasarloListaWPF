@@ -70,6 +70,14 @@ namespace BevasarloListaWPF
         {
             dataGrid.ItemsSource = termekek.OrderByDescending(x=>x.Sum).Take(5);
         }
+        private void arSzerintCsokkeno(Object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = termekek.OrderByDescending(x => x.Price);
+        }
+        private void mindenD500felett(Object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = termekek.Where(x => x.Type == "D").Where(g => g.Price > 500);
+        }
         public class ItemModel
         {
             public string Name { get; set; }
