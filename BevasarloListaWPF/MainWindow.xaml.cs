@@ -57,7 +57,7 @@ namespace BevasarloListaWPF
 
         private void torles(Object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItem == null) return;
+            if (dataGrid.SelectedItem == null && dataGrid.SelectedItem is not ItemModel) return;
 
             termekek.Remove((ItemModel)dataGrid.SelectedItem);
             dataGrid.Items.Refresh();
@@ -77,6 +77,10 @@ namespace BevasarloListaWPF
         private void mindenD500felett(Object sender, RoutedEventArgs e)
         {
             dataGrid.ItemsSource = termekek.Where(x => x.Type == "D").Where(g => g.Price > 500);
+        }
+        private void nevOsszertek(object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = termekek.Select(x => new { Név = x.Name, Összérték = x.Sum }).OrderByDescending(x=>x.Név);
         }
         public class ItemModel
         {
