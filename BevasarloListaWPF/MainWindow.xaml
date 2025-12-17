@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BevasarloListaWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="249*"/>
             <RowDefinition Height="185*"/>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="0" x:Name="dataGrid"></DataGrid>
+        <DataGrid Grid.Row="0" x:Name="dataGrid" ColumnWidth="*"></DataGrid>
         <GroupBox Grid.Row="1">
             <ScrollViewer>
                 <WrapPanel >
                     <GroupBox Header="Termékek" Margin="10">
-                        <Button Content="Hozzáadás" Margin=" 10"></Button>
+                        <Button Content="Hozzáadás" Margin="10"></Button>
                     </GroupBox>
                 </WrapPanel>
             </ScrollViewer>

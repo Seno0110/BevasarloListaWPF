@@ -43,12 +43,17 @@ namespace BevasarloListaWPF
         {
             dataGrid.ItemsSource = termekek;
         }
+        private void hozzadasOldal()
+        {
+            
+        }
         public class ItemModel
         {
             public string Name { get; set; }
             public int Quantity { get; set; }
             public int Price { get; set; }
             public string Type { get; set; }
+            public int Sum { get; set; }
 
             public ItemModel(string name, int quantity, int price, string type)
             {
@@ -56,6 +61,7 @@ namespace BevasarloListaWPF
                 Quantity = quantity;
                 Price = price;
                 Type = type;
+                Sum = Price * Quantity;
             }
         }
     }
