@@ -14,11 +14,13 @@
         <DataGrid Grid.Row="0" x:Name="dataGrid" ColumnWidth="*"></DataGrid>
         <GroupBox Grid.Row="1">
             <ScrollViewer>
-                <WrapPanel >
-                    <GroupBox Header="Termékek" Margin="10">
-                        <Button Content="Hozzáadás" Margin="10"></Button>
-                    </GroupBox>
-                </WrapPanel>
+                <GroupBox Header="Termékek" Margin="10">
+                    <WrapPanel>
+                        <Button Content="Hozzáadás" Margin="10" Click="hozzadasOldal"/>
+                        <Button Content="Törlés" Margin="10" Click="torles"/>
+                        <Button Content="A tipus 3 legnagyobb" Margin="10" Click="Atipus3"/>
+                    </WrapPanel>
+                </GroupBox>
             </ScrollViewer>
         </GroupBox>
     </Grid>

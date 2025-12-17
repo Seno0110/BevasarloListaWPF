@@ -43,9 +43,28 @@ namespace BevasarloListaWPF
         {
             dataGrid.ItemsSource = termekek;
         }
-        private void hozzadasOldal()
+        private void hozzadasOldal(Object sender, RoutedEventArgs e)
         {
-            
+            var ujtermek = new Hozzaadas();
+            ujtermek.ShowDialog();
+            if (ujtermek.DialogResult == true)
+            {
+                termekek.Add(ujtermek.ujtermek);
+                frissites();
+                dataGrid.Items.Refresh();
+            }
+        }
+
+        private void torles(Object sender, RoutedEventArgs e)
+        {
+            if (dataGrid.SelectedItem == null) return;
+
+            termekek.Remove((ItemModel)dataGrid.SelectedItem);
+            dataGrid.Items.Refresh();
+        }
+        private void Atipus3(Object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = termekek.Where(x => x.Type == "A").OrderByDescending(x => x.Sum).Take(3);
         }
         public class ItemModel
         {
